@@ -1,0 +1,1 @@
+| `Control Structure`  | Directs the flow of a program using decisions and repetition (e.g., `if`, `while`). |

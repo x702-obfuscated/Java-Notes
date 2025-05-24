@@ -1,0 +1,2 @@
+| `Data`               | Raw facts or information (like numbers or text) used by a program.            |
+| `Data Structure`     | A way to organize and store data (e.g., lists, arrays, dictionaries).         |

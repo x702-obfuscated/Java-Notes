@@ -4,25 +4,17 @@
 ___
 
 Covered in this file:
-1. [`Introduction to the Java Programming Language`](#an-introduction-to-the-python-programming-language)
-1. [`Single/Multi Line Comments`](#singlemulti-line-comments)
-    1. [`Single-line comments`](#single-line-comments)
-    1. [`Multi-line comments`](#multi-line-comments-docstrings)
+1. [`Comments and Documentation`](#comments-and-documentation)
+1. [`Single Line Comments`](#single-line-comments)
+1. [`Multi-Line Comments`](#multi-line-comments)
+1. [`Javadocs`](#javadocs)
 1. [`First Program: Console Output`](#first-program-console-output)
-1. [`First Program: User Input`](#first-program-user-input)
-1. [`Executing Python Programs`](#executing-a-python-program)
-    1. [`How Python Source Code is executed`](#how-python-source-code-is-executed)
-    1. [`Executing Your Program`](#executing-your-program)
-1. [`Python Installation Path`](#python-installation-path)
-    1. [`Python on Windows`](#python-on-windows)
-    1. [`Python on MacOs/Linux`](#python-on-linux-or-macos)
-1. [`You are Experiencing an Error!`](#you-are-experiencing-an-error)
-    1. [`Syntax/Compile Time Errors`](#syntaxcompile-time-errors)
-        1. [`Fixing Syntax/Compile Time Errors`](#fixing-syntaxcompile-time-errors)
+1. [`First Program: User Input`](#first-program-console-output)
+1. [`Errors`](#errors)
+    1. [`Compile Time Errors`](#compile-time-errors)
     1. [`Runtime Errors`](#runtime-errors)
-        1. [`Fixing Runtime Errors`](#fixing-runtime-errors)
     1. [`Logical Errors`](#logical-errors)
-        1. [`Fixing Logical Errors`](#fixing-logical-errors)
+1. [`Debugging`](#debugging)
 
 <br>
 
@@ -206,6 +198,24 @@ public class Main{
 }
 ```
 
+### Putting it together
+```java
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter Your Name: ");
+
+        String username = scanner.nextLine();
+        scanner.close();
+
+        System.out.println("Welcome " + username + " to the Java Programming Language!");
+    }
+}
+```
+
 <br>
 
 [Back To Top](#java-comments-input-output-and-errors)
@@ -214,29 +224,224 @@ ___
 <br>
 
 
+# `Errors`
+Oh no... you have done something incorrect and are now experiencing an `error`. 
+Not to worry as a human you are prone to many errors, that we machines don't make.
+
+<br>
+
+To make it easier for you to correct your many `PEBKAC` and `ID 10 T` Errors, these errors can be categorized into 3 categories:
+
+### Main Error Categories:
+|Error|Description|
+|:-:|:-|
+|`Syntax/Compile Time Errors`|occur when compiling the code, and the code violates the rules of the programming language's `syntax`.|
+|`Runtime Errors`|occur after the program has been successfully compiled and started execution but result in a `crash`. They usually result from `invalid operations`.|
+|`Logical Errors`|occur when a program runs without crashing but produces incorrect results. These errors are caused by `mistakes in the program's logic`, meaning the code does not behave as intended.|
+
+`NOTE:`
+* `PEBKAC Errors` are thrown when the Problem Exists Between the Keyboard and Chair.
+* `ID 10 T Errors` are thrown when the issue is caused by the user. 
+
+<br>
+
+[Back To Top](#java-comments-input-output-and-errors)
+___
+
+<br>
+
+## `Compile Time Errors` 
+A `Compile Time Error` or `Syntax Error` occurs when the source code violates the rules of the programming language’s grammar or structure (syntax).
+* These errors are typically the easiest errors to fix, and the most common errors that occur.
+
+<br>
+
+|Common Compile Time Errors|
+|:-|
+| Missing braces `{}`, `[]`, `()`|
+| Missing semicolon `;`|
+| Missing quotation mark `""` or `''`|
+| Misspelling names|
+
+<br>
+
+### Compile Time Error Reports
+If a compile time error occurs Java will generate an error report that indicates the filename where the error occured, the line number of the error, and what was expected. 
+
+Example:
+```java
+public class Main{
+    public static void main(String[] args){
+        System.out.println("Hello World!") 
+    }
+}
+```
+Console Output:
+```
+Main.java:4: error: ';' expected
+        System.out.println("Hello World!") 
+                                          ^
+1 error
+```
+
+<br>
+
+### Fixing Syntax/Compile Time Errors
+1. READ THE ERROR OUTPUT. 
+2. Look for the line number.
+3. Look for what was expected.
+4. Remember that error reports are not full proof and will sometimes not perfectly identify the error.
 
 
-## `How Java Source Code is executed`
-## `Executing Your Program`
+<br>
 
-# `Java Installation Path`
-# `You are Experiencing an Error!`
+[Back To Top](#java-comments-input-output-and-errors)
+___
+
+<br>
+
+## `Runtime Errors`
+A `Runtime Error` occurs after the program has successfully compiled (no syntax errors), but an invalid operation has been attempted causing the JVM to terminate program execution.
+* The JVM generates a `traceback` error report for runtime errors.
+
+<br>
+
+### The Traceback
+When a Runtime Error occurs, and error report called a traceback is generated by the JVM.
+
+A `Traceback` or `Stack Trace` is a detailed error message that shows the call stack at the point where an exception occurred, helping identify the sequence of function calls that led to the error.
+
+Example:
+```java
+public class Main{
+    public static void main(String[] args){
+        System.out.println(5 / 0);
+    }
+}
+```
+Console Output:
+```
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+        at Main.main(Main.java:4)
+```
 
 
-Common Errors:
+<br>
 
-    Errors will show up when coding
-    There are 3 types of errors:
-    Syntax errors: errors that are detected by the compiler due to incorrectly written syntax
-    Runtime errors: errors that cause the program to crash unexpectedly
-    Logic errors: errors that cause the program to operate other than intended.
-         
-    Common errors to think about:
-        Missing braces {}
-        Missing semicolon ;
-        Missing quotation mark ""
-        Misspelling names
-         
 
-*/
+### Common Runtime Errors in Java
+| **Exception Type**               | **Description**                                                              | **Example That Causes It**                          |
+| -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------- |
+| `NullPointerException`           | Thrown when you try to use an object reference that is `null`.               | `String s = null; s.length();`                      |
+| `ArithmeticException`            | Thrown when an illegal arithmetic operation occurs, like divide by zero.     | `int x = 10 / 0;`                                   |
+| `ArrayIndexOutOfBoundsException` | Thrown when trying to access an array index that doesn’t exist.              | `int[] arr = {1, 2}; System.out.println(arr[3]);`   |
+| `ClassCastException`             | Thrown when you try to cast an object to a subclass it isn’t an instance of. | `Object x = "hello"; Integer y = (Integer)x;`       |
+| `IllegalArgumentException`       | Thrown when a method receives an argument that is inappropriate or illegal.  | `Thread.sleep(-100);` or `Integer.parseInt("abc");` |
+
+<br>
+
+### Fixing Runtime Errors:
+1. READ THE TRACEBACK
+2. Look for the exception type 
+3. Look for the line number
+4. Remember that the traceback is not full proof and will sometimes not perfectly indetify the exception.
+
+<br>
+
+### Exceptions
+Runtime errors can be further specified as `exceptions`.
+* An `exception` is a specific type of runtime error that can be caught, handled, and recovered from using `try catch`. 
+
+```
+java.lang.Throwable
+├── java.lang.Error           → Serious problems (not meant to be caught)
+└── java.lang.Exception       → Recoverable problems
+     ├── Checked Exceptions   → Must be declared or handled (e.g., IOException)
+     └── Unchecked Exceptions → Subclass of RuntimeException (e.g., NullPointerException)
+```
+
+<br>
+
+<br>
+
+[Back To Top](#java-comments-input-output-and-errors)
+___
+
+<br>
+
+## `Logical Errors`
+A `logical error` is a type of error in a Java program where the code runs without crashing, but it produces incorrect or unexpected results due to a mistake in the program’s logic.
+* Logical Errors tend to occur with lesser frequency than runtime or compile time errors, but are the hardest to track down.
+
+<br>
+
+Example:
+```java
+public class Main{
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
+        int average = a + b / 2;  
+        // int average = a + b / 2; // logic error due to missing parentheses
+        System.out.println("Average: " + average);
+    }
+}
+```
+
+<br>
+
+### Fixing Logical Errors  
+1. DEBUGGING
+    * This will be harder than Compile time or Runtime Errors, because you will not get any help from the computer in tracking down the error.
+    * Learning to use a debugging tool will be the most useful to you, but beginners usually start with print debugging.
+
+
+<br>
+
+[Back To Top](#java-comments-input-output-and-errors)
+___
+
+<br>
+
+
+# `Debugging`
+`Debugging` is the process of identifying, analyzing, and fixing bugs or errors in software.
+
+<br>
+<br>
+
+Debugging occurs in the following steps:
+| Step Number | Step Name       | Description|
+|-|---|-------|
+| 1 | `Detection` | Identifying that a bug exists, typically through user reports, test failures, or odd behavior. |
+| 2 | `Reproduction`| Reproducing the problem consistently to understand how and when it occurs. |
+| 3 | `Diagnosis` | Investigating and determining the root cause of the bug within the code or system. |
+| 4 | `Correction`| Making the necessary code or configuration changes to fix the bug. |
+| 5 | `Testing` | Verifying that the fix works and does not introduce new issues.|
+| 6 | `Documentation` | Recording details about the bug, its cause, the fix applied, and any relevant notes. |
+| 7 | `Prevention`| Implementing safeguards like tests, code reviews, or design changes to avoid future bugs.|
+
+
+
+<br> 
+
+Common Methods of Debugging:
+| Technique | Definition | Description |
+|------------------------------|------------------------------------|-----------------------------------------------------------------------------------------------|
+| `Hand Tracing` | Manually reading through the code | Stepping through code line by line (on paper or mentally) to track variable values and logic flow. |
+| `Adding Output Statements` | Print values during execution| Inserting `print()` or logging statements to display variable values and check the program’s progress or logic. |
+| `Test Cases` | Check input-output behavior| Designing specific scenarios with known inputs and expected outputs to ensure code correctness and isolate bugs. |
+| `Debugging Tools`| Using a software tool to find bugs  | Employing tools like IDE debuggers to set breakpoints, inspect memory, and step through code interactively. |
+
+
+
+
+<br>
+
+[Back to Top](#java-comments-input-output-and-errors)
+___
+
+<br>
+
+*Created and maintained by Mr. Merritt* 
 

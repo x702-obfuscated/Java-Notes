@@ -1,12 +1,6 @@
-//Java Merge sort
-//Java API documentation: https://docs.oracle.com/en/java/javase/18/docs/api/index.html
 
-/* 
-DISCLAIMER: 
-This file is meant to highlight the code and what it is doing. 
-You should not choose class, object, method, or variable names 
-the way this file does. 
-*/
+
+```java
 
 
 /**
@@ -108,12 +102,4 @@ class MergeSort{
   }
 }
 
-/*
-Common Errors:
-
-*/
-
-/*
-Practice:
-
-*/
+```

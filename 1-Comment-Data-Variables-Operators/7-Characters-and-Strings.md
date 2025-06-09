@@ -22,6 +22,8 @@ Notes:
    
 */
 
+  //> Variables that hold the same string value reference the same location in memory (called interning)
+
 class SpecialCharacters {
   public static void main(String[] args){
     

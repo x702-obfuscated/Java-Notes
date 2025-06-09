@@ -193,7 +193,7 @@ Basically: A `reference type` is a data type that holds an object.
 
 Specifically: A `reference type` is a data type that stores a pointer to a location in memory that holds an object. 
 * reference types are defined by Classes
-* reference types are pass by reference
+* reference types are pass by value of a reference
 * reference types are null by default
 * The size of a reference type depends on the data it stores.
 
@@ -204,6 +204,10 @@ An `object` in Java is a block of memory on the `heap` that stores data (fields)
 <br>
 
 `Pass by reference` means that a copy of the memory location is passed around, instead of the value itself.
+
+<br>
+
+`Pass by value of a reference` means that a copy of value that is a pointer to a memory location is passed around.
 
 <br>
 

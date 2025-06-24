@@ -1,6 +1,7 @@
 # `Java Comments Input Output and Errors`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
 ___
 
 Covered in this file:
@@ -227,6 +228,11 @@ ___
 # `Errors`
 Oh no... you have done something incorrect and are now experiencing an `error`. 
 Not to worry as a human you are prone to many errors, that we machines don't make.
+
+<br>
+
+When an error occurs in Java, it is said to have been `thrown`.
+* Errors are `thrown` in Java.
 
 <br>
 

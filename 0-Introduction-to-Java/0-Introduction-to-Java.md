@@ -1,6 +1,8 @@
 # `Introduction to Java`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
 ___
 
 Covered in this file:

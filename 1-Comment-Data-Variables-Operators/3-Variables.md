@@ -1,59 +1,30 @@
 # `Java Variables`
 *Use CTRL + F to search for keywords in this file*  
 *You are encouraged to copy and alter the code in this file to understand how it works*
+
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
 ___
 
 Covered in this File:
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-1. [``]()
-
-Covered in this file:
-1. [`Defining a Variable`](#defining-a-variable)
-1. [`Creating a Variable`](#creating-a-variable)
+1. [`Literals vs. Variables`](#literals-vs-variables)
+1. [`Declaring and Initializing Variables`](#declaring-and-initializing-variables)
     1. [`Assigning Multiple Variables the same value`](#assigning-multiple-variables-the-same-value)
-    1. [`Assigning Multiple Variables on the same line`](#assigning-multiple-variables-on-the-same-line)
+    1. [`Assigining Multiple Variables on the same line`](#assigning-multiple-variables-on-the-same-line)
     1. [`Reassigning a Variable`](#reassigning-a-variable)
-1. [`Rules For Naming Variables`](#rules-for-naming-variables)
-1. [`Variables are Pointers to Locations in Memory`](#variables-are-pointers-to-locations-in-memory)
-    1. [`A Lower Level Explanation of Variables`](#a-lower-level-explanation-of-variables)
-    1. [`NameError: name is not defined`](#nameerror-name-is-not-defined)
+1. [`Rules for Naming Variables`](#rules-for-naming-variables)
+1. [`Varialbes are mapped to memory locations`](#variables-are-mapped-to-memory-locations)
+1. [`error : cannot find symbol`](#error-cannot-find-symbol)
+1. [`Pass by Value vs Pass by Reference`](#pass-by-value-vs-pass-by-reference)
 1. [`Variable Aliasing`](#variable-aliasing)
     1. [`Creating Aliases`](#creating-aliases)
-    1. [`Aliasing: Immutable Types`](#aliasing-immutable-types)
-    1. [`Aliasing: Mutable Types`](#aliasing-mutable-types)
-1. [`Type Annotations: Declaring a Variable Type`](#type-annotation-declaring-variable-type)
+    1. [`Aliasing Immutable Types`](#aliasing-immutable-types)
+    1. [`Aliasing Mutable Types`](#aliasing-mutable-types)
+1. [`Modifiers`](#modifiers)
+    1. [`Access Modifiers`](#access-modifiers)
+    1. [`Non Access Modifiers`](#non-access-modifiers)
 1. [`Variable Scope/Context`](#variable-scopecontext)
-    1. [`Built-in Namespace`](#built-in-namespace)
-    1. [`Global Namespace`](#global-namespace-and-scope)
-    1. [`Local Namespace and Scope`](#local-namespace-and-scope)
-    1. [`global keyword`](#global-keyword)
-    1. [`nonlocal keyword`](#nonlocal-keyword)
-    1. [`Special Scoping Errors`](#special-scoping-errors)
-    1. [`locals() Returns the local scope`](#locals-returns-local-scope)
-    1. [`globals() Returns the global scope`](#globals-returns-global-scope)
+    1. [`Namespace`](#namespace)
+    
 <br>
 
 ---
@@ -97,6 +68,10 @@ String example;     // Variable named example
 <br>
 
 # `Declaring and Initializing Variables`
+In Java variables must first be `declared` (created) and then `initialized` (given a value). 
+
+<br>
+
 To declare a variable write the `type of data` the variable will store followed by the `name of the variable` followed by a single equal sign `=`
 * a single equals sign `=` is used to assign a variable to the data it references
 * When defining a variable it must always be on the `left side` of the `=`
@@ -105,14 +80,27 @@ To declare a variable write the `type of data` the variable will store followed 
 
 <br>
 
-Variable Declaration and Initialization Syntax:
-```
-type variableName = value;
-```
+### Variable Declaration Syntax:
 
+```
+type variableName;
+```
 <br>
 
-Variables have default values when declared but not initialized.
+Variables have default values when declared but not explicitly initialized.
+| Type       | Default Value |
+|------------|:-------------:|
+| boolean    | false         |
+| byte       | 0             |
+| short      | 0             |
+| int        | 0             |
+| long       | 0L            |
+| float      | 0.0f          |
+| double     | 0.0d          |
+| char       | '\u0000' (null character) |
+| Object     | null          |
+
+Examples:
 ```java
 bool state;                 // state = false
 int num;                    // num = 0;
@@ -121,6 +109,15 @@ char letter;                // letter = \u0000;
 String name;                // name = null;
 String [] badPasswords;     // badPasswords = null;
 ```
+
+<br>
+
+
+### Variable Declaration and Initialization Syntax:
+```
+type variableName = value;
+```
+Examples:
 ```java
 bool state = false;
 int num = 10;
@@ -217,7 +214,7 @@ int @#$%@ = 0;    // Invalid: special characters not allowed
 
 <br>
 
-# `Variables are references (or values) to locations in memory`
+# `Variables are mapped to memory locations`
 
 ## `A Lower Level Explanation of Variables in Java`
 
@@ -338,7 +335,7 @@ The `Heap` is a region of memory usef for dynamic memory allocation that is eith
 <br>
 
 ## `Creating Aliases`
-Create an alias by assigning one variable to another.
+Create an `alias` by assigning one variable to another variable.
 
 ```java
 String[] a = {"d", "a", "t", "a"};
@@ -350,181 +347,222 @@ System.out.println(a);  // Output: [Ljava.lang.String;@276438c9
 System.out.println(b);  // Output: [Ljava.lang.String;@276438c9
 System.out.println(c);  // Output: [Ljava.lang.String;@276438c9
 ```
+
+<br>
+
 ## `Aliasing Immutable Types`
 Changing the mapping of one value does not change the mapping of the other aliases.
 
 ```java
-String[] a = {"d", "a", "t", "a"};
-String[] b = a; 
-String[] c = b;
+String a = "Java Programming";
+String b = a;
+String c = b;
 
-a = new String[]{"n","e","w"};
+a = "Based on C Programming";
 
-System.out.println(a);  // Output: [Ljava.lang.String;@1ee807c6
-System.out.println(b);  // Output: [Ljava.lang.String;@276438c9
-System.out.println(c);  // Output: [Ljava.lang.String;@276438c9
-
+System.out.println(a);      // Output: Java Programming
+System.out.println(b);      // Output: Based on C Programming
+System.out.println(c);      // Output: Based on C Programming
 ```
 
 <br>
 
 ## `Aliasing Mutable Types`
-# `Access Modifiers`
-# `Variable Scope/Context`
-## `Namespace`
-## `Global Namespace`
-## `Local Namespace`
+Changing the value of a mutable type, changes the value for all aliases. This is because the variables all share a mapping to the changed data. 
+
 ```java
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+public class Main{
+    public static void main(String[] args) {
+        // Create Aliases of a Mutable Type (String Array)
+        String[] a = {"d", "a", "t", "a"};
+        String[] b = a; 
+        String[] c = b;
 
 
 
+        System.out.println(a);  // Output: [Ljava.lang.String;@6b0c2d26  
+        System.out.println(b);  // Output: [Ljava.lang.String;@6b0c2d26  
+        System.out.println(c);  // Output: [Ljava.lang.String;@6b0c2d26  
+    
+        System.out.println(Arrays.toString(a)); // Output: [d, a, t, a] 
+        System.out.println(Arrays.toString(b)); // Output: [d, a, t, a]
+        System.out.println(Arrays.toString(c)); // Output: [d, a, t, a]
 
-  public static void main(String[] args){
-    //ignore this above for now, but make sure it is in every program you write or they will not work.
-    //see Methods.java for an explanation of the 'main' method
-   
-  //============================================================================================================================================================================//
-    //Declaring and Initializing Variables
-      //> syntax : type identifier = literalValue;
-      //> alias are variables that represent the same value
-    
-    //declaring a variable
-    int num; //> 0
-    double duo; //> 0.0
-    boolean bool; //> false
-    String str; //> null
-    
-    
-    //declaring and initializing a variable
-    int initNum = 0;
-    double initDuo = 0.0;
-    boolean initBool = false;
-    String initStr = null;
-    
-    //Declare multiple variables of the same type with a comma separated list:
-    int a = 1, b = 2, c = 3;
-    
-    //or one value to multiple variables
-    a = b = c = 100;
-    
-    //aliases
-    int num1 = num;
-    int num2 = num1;
-    int num3 = num2;
-    // num, num1, num2, num3 are all aliases
-    
-    
-  //============================================================================================================================================================================//
-    //Using Variables in Operations
-      //> variables can be used in operations in place of literals
-    int x = 2;
-    int y = 5;
-    
-    String front = "Hello ";
-    String back = "World";
-    
-    System.out.println(x + y);
-    System.out.println(x * y);
-    System.out.println(x - y);
-    System.out.println(x / y);
-    System.out.println(x % y);
-    
-    System.out.println(front + back);  
-  }
-  
-//============================================================================================================================================================================//
-  //Formal Parameters
-    //> Formal Parameters appear in the method header
-    //> These are special variables for passing values to a method
-    //> These variables have a local scope to the method (they do not exist outside the method definition)
 
-//{----IGNORE THIS FOR NOW----}{-----------------FOCUS HERE------------------}
-  public static void methodName(int num, double duo, boolean bool, String str) {
-    return;                     //In the parenthesis of a method header formal parameters(variables) are declared
-  }                             //These variable only exist between the {} of the method
-                                //When the method is called actual parameters(arguments) aka values are used to initialize the formal parameters. 
+        a[1] = "X";     // Change the data of the mutable type
 
-//============================================================================================================================================================================//
-  //Instance Variables and Modifiers
-    //> instance variables are associated with objects of a class
-    //> instance variables are declared in the class definition, and initialized in a special method called a constructor
-    //> modifiers determine the accessibility of these variable outside of the declared class
-      //> default : accessible in the same package
-      //> public  : accessible anywhere
-      //> private : only accessible in the declared class
-      //> protected : accessible in the same package
+        // Data has changed for all aliases, because they point to the same memory.
+        System.out.println(Arrays.toString(a)); // Output: [d, X, t, a] 
+        System.out.println(Arrays.toString(b)); // Output: [d, X, t, a]
+        System.out.println(Arrays.toString(c)); // Output: [d, X, t, a]
+        
     
-    //examples
-    int num;
-    public int num1;
-    private int num2;
-    protected int num3;
-    
-    double duo;
-    boolean bool;
-    String str;
-    
-//============================================================================================================================================================================//
-  // Final Variables
-    //> the final keyword prevents a variable's value from being changed
-    //> often used for constants
-    
-    final double pi = 3.14159;
-
-//============================================================================================================================================================================//
-  //Static Variables
-    //> static means unchanging
-    //> static variables belong to the class they are declared in.
-    //> static variables are the same for all instances of a class.
-    //> typically declared and initialized in the class definition.
-    
-    static int unchanging = 10;
-    
-//============================================================================================================================================================================//
-  //Variable Scope 
-    //> variables have scope (what part of the program they can be accessed from)
-    //> variables can only be accessed after they have been declared. 
-    //> variables declared in the class definition (fields) are accessible from the entire class
-    //> variables declared in a method are accessible in that method only
-    //> variable declared inside of a loop, or conditional are accessible in loop/conditional block only
-    
-    
-  //example
-    //> A code block is all of the code between curly braces.
-    //> code before the variable cannot access it.
-    //> code after the variable can access it.
-    //> code outside of the curly braces cannot access variables defined inside of the braces.
-    //word scope =============================================================//
-    String word;                                                              //
-                                                                              //
-    public static void method(int number) {// number scope~~~~~~~~~~//        //
-                                                                    //        //
-      for(int spot = 0; spot < 5; spot ++) {// spot scope -----//   //        // 
-          continue;                                            //   //        //
-                                                               //   //        //
-      }// spot scope ------------------------------------------//   //        //
-                                                                    //        //
-    }// number scope~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//        //
-                                                                              //
-   //word scope ==============================================================//
-    
- 
+    }
 }
-
-/*
-Common Errors:
-  Forgetting a semicolon ;
-  Forgetting quotes ""
-  Forgetting the type when declaring the variable
-  Redeclaring the variable when changing its value
-
-
-*/
-
-/*
-Practice:
-Create a program that prints out your full name, age and answers the true/false question below:
-  Booleans come from a form of math called boolean algebra. (true/false)?
-
-*/
 ```
+
+<br>
+
+[Back To Top](#java-variables)
+
+---
+
+<br>
+
+# `Modifiers`
+A `modifier` in Java is a keyword that changes the meaning or behavior of a class, method, or variable.
+* Control the access level (who/where names can be used).
+* Specify other behaviours. 
+
+<br>
+
+There are two categories of modifier keywords in Java, Access Modifiers and Non-Access Modifiers. 
+* `Access Modifiers` control who/where constructs can be accessed.
+* `Non-Access Modifiers` handle everything else.
+
+<br>
+
+| **Type** | **Modifiers** |
+| -- | -- |
+| Access Modifiers     | `public`, `protected`, `private`, *(default)* |
+| Non-Access Modifiers | `final`, `static`, `abstract`, `synchronized`, `transient`, `volatile`, `native`, `strictfp` |
+
+<br>
+
+## `Access Modifiers`
+| Modifier   | Accessibility Description                          |
+|------------|--------------------------------------------------|
+| `default` (implicit)| Accessible only within the `same package`. |
+| `public`     | Accessible from `anywhere`                        |
+| `private`    | Accessible only within the `declaring class`     |
+| `protected`  | Accessible within the `same package` and by `subclasses` (even in other packages) |
+
+Examples:
+```java
+int num = 10;               // default : same package only
+public int num = 10;        // public  : anywhere
+private int num = 10;       // private : within the declaring class only
+protected int num = 10;     // protected : same package and subclasses only
+```
+
+---
+
+<br>
+
+## `Non-Access Modifiers`
+
+Non-access modifiers that apply to variables:
+| Modifier    | Description                                              |
+|-------------|----------------------------------------------------------|
+| `final`     | Variable value cannot be changed after initialization    |
+| `static`    | Variable belongs to the class, shared by all instances   |
+| `volatile`  | Ensures variable updates are visible to all threads immediately |
+| `transient` | Variable is skipped during serialization                  |
+
+Examples:
+```java
+final String constant = "value cannot change";
+static String classOwned = "This value is shared among all instances of the class";
+volatile String unstable = "update to all threads immediately";
+transient String skipped = "Ignored when serializing"
+```
+<br>
+
+Modifiers that do not apply to variables:
+* These will be covered in detail in other files.
+
+| Modifier       | Applicable To           | Description                                            |
+|----------------|------------------------|--------------------------------------------------------|
+| `abstract`     | Classes, Methods       | Indicates incomplete implementation; classes can't be instantiated, methods must be overridden |
+| `synchronized` | Methods, Blocks        | Ensures only one thread executes a method/block at a time (thread safety) |
+| `native`       | Methods                | Specifies method is implemented in platform-dependent code (e.g., C/C++) |
+| `strictfp`     | Classes, Methods       | Enforces consistent floating-point calculations across platforms |
+
+                     
+
+<br>
+
+[Back To Top](#java-variables)
+
+---
+
+<br>
+
+# `Variable Scope/Context`
+Basically: `Scope/Context` is the area within code in which a variable can be accessed and used 
+
+Specifically: `Scope/Context` refers to the visibility and accessibility of variables, methods, and other identifiers within a program.
+
+1. Variables have scope (what part of the program they can be accessed from).
+1. Variables can only be accessed after they have been declared.
+1. Variables declared within a `class` (fields) are accessible from the `entire class`.
+1. Variables declared within a `method` are accessible within that `method only`.
+1. Variables declared within a `block` (if, while, for, etc.) are accessible within that `block only`.
+
+<br>
+
+| Scope | Where It's Declared  | Accessibility  |
+|-----|---|---|
+| `Package`        | No access modifier on class, method, or field    | Accessible only within the same package          |
+| `Class`          | Inside a class, but outside any method (fields) | Accessible throughout the class; can be controlled using access modifiers (`public`, `private`, etc.) |
+| `Method`         | Inside a method                                 | Accessible only within that method               |
+| `Parameter`      | Inside method parentheses as parameters         | Accessible only within that method               |
+| `Block`          | Inside a block (e.g., `if`, `for`, `while`)     | Accessible only within that specific block       |
+
+---
+
+<br>
+
+
+## `Namespace`
+A `Namespace` is a mapping of names (variables) to memory locations.
+* There are 4 different namespace levels in Java.
+* `java.lang` is a built-in package namespace that is automatically imported into every Java source file (`.java`)
+
+<br>
+
+| Namespace Type| Description | 
+|--|--|
+| `Package`    | Groups related classes and interfaces |
+| `Class`      | Contains fields, methods, and inner classes |
+| `Method`     | Contains method-local variables and parameters |
+| `Block`      | Contains variables declared inside blocks (`if`, `for`, `while` etc.) |
+
+```java
+// Outside of Class is Package Scope.
+public class Example{ // Class Scope Begins
+
+    public static void main(String[] args){ // Method/Parameter Scope Begins
+
+        for(int i = 0; i < 11; i++){ // for Block Scope Begins
+            
+            System.out.println(i);
+
+        } // for Block Scope Ends
+
+    } // Method/Parameter Scope Ends
+
+} // Class Scope Ends
+```
+* A code block is all of the code between curly braces.
+* code before a variable's declaration cannot access it.
+* code after the variable's declaration can access it.
+* code outside of the curly braces cannot access variables defined inside of the braces.
+    * With the exception of modified class/instance variables (ie. public, protected, and default)
+
+<br>
+
+[Back To Top](#java-variables)
+
+---
+
+<br>
+
+*Created and maintained by Mr. Merritt*
+
+
+

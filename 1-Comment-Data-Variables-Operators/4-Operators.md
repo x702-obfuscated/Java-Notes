@@ -1,4 +1,318 @@
+# `Java Operators`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
+
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
+
+For brevity in these notes please assume all of the code snippets in this file are written inside of this main method unless otherwise stated.
+```java
+public class Example{
+
+    public static void main(String[] args){
+        
+        // code snippets written here
+    
+    }
+}
+```
+---
+
+Covered in this file:
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+
+<br> 
+
+---
+
+<br>
+
 | `Operator`           | A symbol that performs an action on values (e.g., `+`, `-`, `==`).            |
+
+Covered in this file:
+1. [`Operators, Operands, and Precedence`](#operators-operands-and-precedence)
+    1. [`Complete Operator Precedence`](#complete-operator-precedence)
+    1. [`Expressions`](#expressions)
+1. [`Concatenation`](#concatenation)
+1. [`Duplication`](#duplication)
+1. [`Casting (changing data type)`](#casting-changing-data-type)
+1. [`Arithmetic operators (math)`](#arithmetic-operators-math)
+1. [`Comparison aka Relational Operators`](#comparision-aka-relational-operators)
+1. [`Membership operators`](#membership-operators)
+1. [`Identity operators`](#identity-operators)
+1. [`Assignment vs Equality Operator`](#assignment-vs-equality-operators)
+    1. [`Walrus Operator`](#walrus-operator)
+1. [`Compound Assignment Operators`](#compound-assignment-operators)
+    1. [`Incrementing a Value`](#incrementing-a-value)
+    1. [`Decrementing a Value`](#decrementing-a-value)
+1. [`Logical operators (not, and, or)`](#logical-operators)
+    1. [`NOT Truth table`](#not-truth-table)
+    1. [`AND Truth table`](#and-truth-table)
+    1. [`OR Truth table`](#or-truth-table)
+1. [`De Morgan's Laws`](#de-morgans-laws)
+1. [`Built-in Operation Function Calls`](#built-in-operation-function-calls)
+1. [`Bitwise Operations`](#bitwise-operations)
+    1. [`Binary Data Representation: Two's complement notation`](#binary-data-representation-twos-complement-notation)
+    1. [`Bitwise NOT`](#bitwise-not)
+    1. [`Bitwise Shift <<|>>`](#bitwise-shift)
+    1. [`Bitwise AND`](#bitwise-and)
+    1. [`Bitwise XOR`](#bitwise-xor)
+    1. [`Bitwise OR`](#bitwise-or)
+1. [`Appendix`](#appendix)
+
+
+
+# `Operators Operands and Precedence`
+
+`Operators` are the symbols used to perform operations on `operands`.
+
+`Operands` are the values or variables that operators operate on. 
+
+example:
+
+    a + b
+
+* Operator: `+`
+* Operands: `a` and `b`
+
+<br>
+
+## `Complete Operator Precedence`
+`Operator precedence` refers to the rules that determine the order in which operators are evaluated in an expression. 
+
+Below is the complete operator precendance for Python.
+* From top to bottom: Top is highest precedence.
+
+<br>
+
+`Associativity` defines the order in which operators of the same precedence level are evaluated when they appear next to each other in an expression.
+* Operations at the same level typically proceed from left to right in the expression. But not always.
+
+| Precedence | Operators | Description  | Associativity  |
+|---|:--:|---|---|
+| 1| `()` <br> `[]` <br> `.` <br> `::`  | parentheses (method call, grouping) <br> array subscript <br> member Access <br> method Reference | Left to right|
+| 2| `++` <br> `--`| post-increment, <br> post-decrement | Left to right|
+| 3| `++`<br> `--`<br> `+`<br> `-`<br> `~`<br> `!`| pre-increment,<br> pre-decrement,<br> unary plus,<br> unary minus,<br> bitwise NOT,<br> logical NOT | Right to left|
+| 3| `new`<br>`(type)` | object Creation <br> type cast| Right to left|
+| 4| `*`<br> `/`<br> `%`| multiplication,<br> division,<br> modulus/remainder| Left to right|
+| 5| `+`<br> `-`| addition,<br> subtraction| Left to right|
+| 6| `<<`<br> `>>`<br> `>>>`| bitwise shift left,<br> bitwise shift right,<br> bitwise shift unsigned right| Left to right|
+| 7| `<`<br> `<=`<br> `>`<br> `>=`<br> `instanceof` | less than<br> less than or equal to<br> greater than<br> greater than or equal to<br> class comparision | Left to right|
+| 8| `==`<br> `!=`| is equal to,<br> is NOT equal to | Left to right|
+| 9| `&`| bitwise AND| Left to right|
+| 10 | `^`| bitwise XOR| Left to right|
+| 11 | `\|` | bitwise OR | Left to right
+| 12 | `&&` | logical AND| Left to right|
+| 13 | `\|\|` | logical OR| Left to right |
+| 14 | `?:` | ternary conditional| Right to left|
+| 15 | `=`<br> `+=`<br> `-=`<br> `*=`<br> `/=`<br> `%=`<br> `&=`<br> `\|=`<br> `^=`<br> `<<=`<br> `>>=`<br> `>>>=`| assignment,<br> add and assign,<br> subtract and assign,<br> multiply and assign,<br>divide and assign,<br>modulus and assign,<br> bitwise AND and assign,<br>bitwise OR and assign,<br>bitwise XOR and assign,<br> bitshift left and assign,<br> bitshift right and assign,<br> bitshift right unsigned and assign | Right to left |
+| 16 | `->`<br> `yield` | Lambda expression <br> switch yield| Right to left|
+
+
+
+*NOTE*:   
+> *If you have trouble remembering operation precedence remember that you can always use parenthesis to make your code clear*
+
+
+<br>
+
+[Back To Top](#java-operators)
+
+---
+<br>
+
+# `Expressions`
+---
+
+Basically: An `expression` is a statement with a result or answer.
+
+Specifically: An `expression` is a combination of data, variables, and operations that is evaluated to produce a single value aka result or answer.
+
+
+# Comprehensive Java Expressions (From Simple to Complex)
+
+## 1. Literal Expressions (No Variables)
+
+```java
+42;                   // integer literal
+3.14;                 // double literal
+"Hello";              // string literal
+true;                 // boolean literal
+'c';                  // char literal
+```
+
+## 2. Variable-Only Expressions
+
+```java
+x;                    // evaluates to value of x
+name;                 // evaluates to value of name
+```
+
+## 3. Arithmetic Expressions
+
+```java
+a + b;                // addition
+a - 3;                // subtraction with a literal
+a * b + 2;            // combined operations
+(a + b) / c;          // parentheses control order
+```
+
+## 4. Comparison Expressions
+
+```java
+a > b;                // greater than
+a == 10;              // equality
+b != c;               // inequality
+(a + b) >= (c - 2);   // comparison with arithmetic
+```
+
+## 5. Logical Expressions
+
+```java
+a > b && c < d;               // logical AND
+a == 10 || b == 5;            // logical OR
+!(a < b);                     // logical NOT
+(a > b) && !(c == d);         // nested logic
+```
+
+## 6. Membership and Identity-Like Checks
+
+```java
+Arrays.asList("x", "y").contains("x");    // check membership in list
+list.contains(5);                         // list membership
+a == b;                                   // identity for primitives
+a.equals(b);                              // object value equality
+a != null;                                // null check (similar to "is not None")
+```
+
+## 7. Expressions with Arrays, Lists, Maps, or Objects
+
+```java
+list.size();                   // method call on list
+map.get("key");                // dictionary (map) lookup
+array[1] + 5;                  // array access and arithmetic
+sum(a, b, c) > 20;             // method call with comparison
+```
+
+
+
+## 8. Expressions with Methods and Nesting
+
+```java
+Math.max(a, b) + Math.min(c, d);                 // nested method calls
+Math.abs(a - b) > Math.pow(c, 2);                // math methods with comparison
+Arrays.sort(arr); arr[0] == a;                   // sort and compare
+(a instanceof Integer) && (b instanceof Float);  // type checks
+```
+
+
+
+## 9. Ternary and Complex Conditional Expressions
+
+```java
+a > b ? "yes" : "no";                          // ternary expression
+(a > b ? a : b) + c;                           // ternary inside arithmetic
+(xList.contains(x) ? true : false) && y == 3;  // mixed logic and ternary
+```
+
+
+
+
+
+<br>
+
+[Back To Top](#java-operators)
+
+---
+<br>
+
+# `Concatenation`
+
+# `Type Casting`
+
+# `Unary Operators`
+
+# `Arithmetic Operators`
+
+## `Integer Overflow Error`
+
+## `Floating Point Error`
+
+# `Comparision aka Relational Operators`  
+
+# `Identity Operators`
+
+
+
+# `Assignment vs Equality Operators`
+
+# `Compound Assignment Operators`
+
+## `Increment Operations`
+
+## `Decrement Operations`
+
+
+
+
+
+
+# `Logical Operators (!, &&, ||)`
+
+## `NOT ! Truth Table`
+
+## `AND && Truth Table`
+
+## `OR || Truth Table`
+
+# `De Morgan's Laws`
+
+
+
+
+# `Bitwise Operations`
+
+## `Bitwise NOT ~`
+
+## `Bitwise shift << >> >>>`
+
+## `Bitwise AND &`
+
+## `Bitwise XOR ^`
+
+## `Bitwise OR |`
+
+
+
+
+
+
+
+
 
 
 

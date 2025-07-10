@@ -12,7 +12,7 @@ Covered in this File:
     1. [`Assigining Multiple Variables on the same line`](#assigning-multiple-variables-on-the-same-line)
     1. [`Reassigning a Variable`](#reassigning-a-variable)
 1. [`Rules for Naming Variables`](#rules-for-naming-variables)
-1. [`Varialbes are mapped to memory locations`](#variables-are-mapped-to-memory-locations)
+1. [`Variables are mapped to memory locations`](#variables-are-mapped-to-memory-locations)
 1. [`error : cannot find symbol`](#error-cannot-find-symbol)
 1. [`Pass by Value vs Pass by Reference`](#pass-by-value-vs-pass-by-reference)
 1. [`Variable Aliasing`](#variable-aliasing)

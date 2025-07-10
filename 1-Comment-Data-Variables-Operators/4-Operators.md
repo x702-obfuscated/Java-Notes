@@ -251,10 +251,100 @@ a > b ? "yes" : "no";                          // ternary expression
 <br>
 
 # `Concatenation`
+Basically: `concatenation` means "to join"
 
-# `Type Casting`
+Specifically: `concatenation` is the operation of joining two or more strings, arrays, or other sequences end-to-end to form a single sequence.
+* use the `+` sign to concatenate Strings in Java.
+* `+` can only be used to concatenate Strings in Java.
+
+syntax: 
+```
+sequence1 + sequence2
+```
+Examples:
+```java
+"Hello" + "World";
+//Result: Hello World
+
+System.out.println("Hello" + "World");
+// Output:  HelloWorld
+
+//Using Variables
+first = "Hello";
+second = "World";
+System.out.println(first + second);
+// Output: HelloWorld
+```
+
+<br>
+
+[Back To Top](#java-operators)
+
+---
+<br>
+
+# `Type Casting Primitives`
+`Casting` is the process of converting data from one type to another. This is also known as type conversion. 
+* In Java there are two types of casting: `widening/implicit casting` and `narrowing/explicit casting`.
+
+<br>
+
+## `Widening Casting`
+`Widening/Implicit Casting` is automatic, and results in no data loss.
+
+<br>
+Example:
+
+```java
+int a = 10;
+double b = a; // int → double (widening)
+System.out.println(b); // Output: 10.0
+```
+
+<br>
+
+## `Narrowing Casting`
+`Narrowing/Explicit Casting` is manual, and possibly result in data loss.
+* To explicitly cast use the type of the data to which you would like to cast.
+
+<br>
+
+syntax:
+```
+type variable = (type) value;
+```
+Example:
+```java
+double a = 9.81;
+int b = (int) a; // narrowing: double --> int
+System.out.println(b);  // Output: 9 (fractional part is lost (truncated))
+```
+
+<br>
+
+[Back To Top](#java-operators)
+
+---
+<br>
 
 # `Unary Operators`
+`Unary operators` are operators that operate on only one operand. 
+* Used to perform simple operations, like incrementing a value, negating it, or inverting a boolean.
+
+<br>
+
+| Operator | Description                       | Example           |
+| -------- | --------------------------------- | ----------------- |
+| `+`      | Unary plus (usually redundant)    | `+a`              |
+| `-`      | Unary minus (negates a number)    | `-a`              |
+| `++`     | Increment (prefix/postfix)        | `++a`, `a++`      |
+| `--`     | Decrement (prefix/postfix)        | `--a`, `a--`      |
+| `!`      | Logical NOT (inverts boolean)     | `!true` → `false` |
+| `~`      | Bitwise complement (inverts bits) | `~a`              |
+
+## `Increment Operations`
+
+## `Decrement Operations`
 
 # `Arithmetic Operators`
 
@@ -272,9 +362,7 @@ a > b ? "yes" : "no";                          // ternary expression
 
 # `Compound Assignment Operators`
 
-## `Increment Operations`
 
-## `Decrement Operations`
 
 
 

@@ -76,7 +76,7 @@ System.out.println(Math.E);         // Output: 2.718281828459045
 ---
 
 <br>
-
+ 
 # `Arithmetic Methods`
 | Method Signature                         | Description |
 |------------------------------------------|-------------|

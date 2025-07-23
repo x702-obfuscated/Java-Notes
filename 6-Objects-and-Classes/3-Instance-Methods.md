@@ -1,4 +1,50 @@
+# `Java Instance Methods`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
 
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
+
+
+---
+
+Covered in this file:
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+
+<br>
+
+---
+
+<br>
+
+# ``
+
+
+<br>
+
+[Back To Top]()
+
+---
+
+<br>
+
+*Created and maintained by Mr. Merritt*
 
 ```java
 

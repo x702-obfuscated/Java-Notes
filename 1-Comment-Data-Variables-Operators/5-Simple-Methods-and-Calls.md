@@ -1,21 +1,60 @@
+# `Java Simple Methods and Calls`
+*Use CTRL + F to search for keywords in this file*  
+*You are encouraged to copy and alter the code in this file to understand how it works*
 
+[Java Documentation](https://docs.oracle.com/en/java/javase/index.html)
 
+For brevity in these notes please assume all of the code snippets in this file are written inside of this class unless otherwise stated.
 ```java
-//Java User input
-//Java API documentation: https://docs.oracle.com/en/java/javase/18/docs/api/index.html
+public class Example {
 
-/* 
-DISCLAIMER: 
-This file is meant to highlight the code and what it is doing. 
-You should not choose class, object, method, or variable names 
-the way this file does. 
-*/
+}
+```
+---
 
-/**
-Notes:
+Covered in this file:
+1. [`Quickstart Guide to Methods`]()
+1. [`System.out.print() and System.out.println()`]()
+1. [`User input java.util.Scanner`]()
+1. [`Nested Methods Calls`]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
+1. [``]()
 
-*/
+<br>
 
+---
+
+<br>
+
+# ``
+
+
+<br>
+
+[Back To Top](#java-simple-methods-and-calls)
+
+---
+
+<br>
+
+# `User Input java.util.Scanner`
+```java
 //import the java package class java.util.Scanner
 import java.util.Scanner;
 
@@ -56,14 +95,30 @@ class Input {
     }
   }
 }
-
-/*
-Common Errors:
-
-*/
-
-/*
-Practice:
-
-*/
 ```
+
+<br>
+
+[Back To Top](#java-simple-methods-and-calls)
+
+---
+
+<br>
+
+# ``
+
+
+<br>
+
+[Back To Top](#java-simple-methods-and-calls)
+
+---
+
+<br>
+
+
+*Created and maintained by Mr. Merritt*
+
+
+
+
